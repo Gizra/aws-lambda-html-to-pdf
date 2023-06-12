@@ -5,7 +5,8 @@ exports.handler = async (event, context) => {
     let browser = null;
     
     try {
-        const html = event.html;  // You will pass HTML in the Lambda event
+        const body = JSON.parse(event.body);
+        const html = body.html;
 
         browser = await chromium.puppeteer.launch({
             args: chromium.args,
